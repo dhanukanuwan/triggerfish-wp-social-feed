@@ -52,6 +52,16 @@ class Triggerfish_Wp_Social_Feed_Public {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
+		$this->load_dependencies();
+
+		add_shortcode( 'tg_newsfeed', array( $this, 'newsfeed_shortcode_func' ) );
+		add_filter( 'body_class', array( $this, 'newsfeed_shortcode_body_class' ) );
+
+	}
+
+	public function load_dependencies() {
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/twitter/wp-social-twitter.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/google/wp-social-google.php';
 	}
 
 	/**
@@ -61,7 +71,8 @@ class Triggerfish_Wp_Social_Feed_Public {
 	 */
 	public function enqueue_styles() {
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/triggerfish-wp-social-feed-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'newsfeed-layout', plugin_dir_url( __FILE__ ) . 'css/bulma.min.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'newsfeed-main-css', plugin_dir_url( __FILE__ ) . 'css/public.css', array(), $this->version, 'all' );
 
 	}
 
@@ -72,8 +83,42 @@ class Triggerfish_Wp_Social_Feed_Public {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/triggerfish-wp-social-feed-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( 'newsfeed-mixitup-js', plugin_dir_url( __FILE__ ) . 'js/mixitup.min.js', array( 'jquery' ), '3.3.0', true );
+		wp_enqueue_script( 'newsfeed-linkify-js', plugin_dir_url( __FILE__ ) . 'js/linkify.min.js', array( 'jquery' ), '2.1.6', true );
+		wp_enqueue_script( 'newsfeed-linkify-jquery-js', plugin_dir_url( __FILE__ ) . 'js/linkify-jquery.min.js', array( 'jquery' ), '2.1.6', true );
+		wp_enqueue_script( 'newsfeed-main-js', plugin_dir_url( __FILE__ ) . 'js/social-feed-public.js', array( 'jquery' ), $this->version, true );
 
 	}
+
+	public function newsfeed_shortcode_func( $atts ) {
+
+		$attr = shortcode_atts( array(
+			'youtube' => true,
+			'twitter' => true,
+		), $atts );
+
+		$html = $this->newsfeed_shortcode_output();
+
+		return $html;
+
+	}
+
+	public function newsfeed_shortcode_output() {
+
+		include_once( plugin_dir_path( __FILE__ ) . 'partials/newsfeed-shortcode-output.php' );
+
+	}
+
+	public function newsfeed_shortcode_body_class( $c ) {
+
+	    global $post;
+
+	    if( isset($post->post_content) && has_shortcode( $post->post_content, 'tg_newsfeed' ) ) {
+	        $c[] = 'tg-newsfeed-page';
+	    }
+	    return $c;
+	}
+
+	
 
 }

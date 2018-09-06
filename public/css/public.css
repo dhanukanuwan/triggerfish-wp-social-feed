@@ -1,0 +1,101 @@
+body.tg-newsfeed-page #content #primary{
+	max-width: 100%;
+}
+body.tg-newsfeed-page #content .wrap{
+	max-width: 1200px;
+}
+body.tg-newsfeed-page .site-content-contain{
+	background-color: #f1f1f1;
+}
+.tg-newsfeed-wrap{
+	display: inline-block;
+	width: 100%;
+}
+.tg-newsfeed-sort {
+	text-align: right;
+}
+.tg-newsfeed-header-left .tg-newsfeed-sort{
+	text-align: left;
+}
+.tg-newsfeed-sort a:not(:last-child){
+	margin-right: 10px;
+}
+
+.tg-newsfeed-filter-content{
+	-moz-column-count:4;
+	-webkit-column-count:4;
+	-o-column-count:4;
+	column-count: 4;
+	-moz-column-gap: 0;
+	-webkit-column-gap: 0;
+	-o-column-gap: 0;
+  	column-gap: 0;
+}
+.tg-newsfeed-single{
+	-moz-break-inside: avoid;
+	-webkit-break-inside: avoid;
+	-o-break-inside: avoid;
+	break-inside: avoid;
+  	display: inline-block;
+    vertical-align: top;
+    position: relative;
+    backface-visibility: hidden; /* prevents flicker in chrome */
+    will-change: transform, opacity; /* prevents flicker in safari */
+}
+.tg-newsfeed-single .tg-newsfeed-single-inner{
+	background: #fff;
+	margin:10px;
+	-webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.tg-newsfeed-single .tg-newsfeed-single-inner .tg-newsfeed-single-bottom{
+	padding: 15px;
+}
+.tg-newsfeed-single .tg-newsfeed-single-inner:hover{
+	-webkit-box-shadow: 1px 3px 8px 2px rgba(0,0,0,0.1);
+	box-shadow: 1px 3px 8px 2px rgba(0,0,0,0.1);
+}
+.tg-newsfeed-single .tg-newsfeed-single-inner h2{
+	font-size: 18px;
+    font-weight: 600;
+}
+.tg-newsfeed-single .tg-newsfeed-single-inner iframe{
+	margin-bottom: 0;
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+
+	.tg-newsfeed-filter-content{
+		-moz-column-count:3;
+		-webkit-column-count:3;
+		-o-column-count:3;
+		column-count: 3;
+	}
+
+}
+
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+
+	.tg-newsfeed-filter-content{
+		-moz-column-count:2;
+		-webkit-column-count:2;
+		-o-column-count:2;
+		column-count: 2;
+	}
+
+}
+
+@media only screen and (max-width: 599px) {
+
+	.tg-newsfeed-filter-content{
+		-moz-column-count:1;
+		-webkit-column-count:1;
+		-o-column-count:1;
+		column-count: 1;
+	}
+
+}
