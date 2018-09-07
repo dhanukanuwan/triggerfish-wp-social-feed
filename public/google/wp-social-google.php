@@ -20,6 +20,11 @@
 
 		}
 
+		/**
+		 * Fetching a list of video data from given playlist ID
+		 *
+		 * @since    1.0.0
+		 */
 		public function fetch_youtube_videos () {
 
 			$request_url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=20&playlistId=' . $this->options['playlist_id'] . '&key=' . $this->options['api_key'];
@@ -38,6 +43,12 @@
 
 		}
 
+		/**
+		 * Getting a list of video ID, Title and data from fetched data
+		 *
+		 * @since    1.0.0
+		 * @param      array    $response_items      fetched video data using api call.
+		 */
 		public function fetch_youtube_video_info_list ( $response_items = array() ) {
 
 			$this->response_items = $response_items;
@@ -87,6 +98,14 @@
 
 		}
 
+		/**
+		 * Outputs video embed html for given video ID
+		 *
+		 * @since    1.0.0
+		 * @param      string    $video_id      Video ID to output embed code.
+		 * @param      string    $width      Width of the vide embed.
+		 * @param      string    $height      Height of the vide embed.
+		 */
 		public function output_video_embed_html ( $video_id = null, $width = '100%', $height = '200' ) {
 
 			$html = null;
