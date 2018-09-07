@@ -70,8 +70,6 @@
 
 						}
 
-
-
 						if ( ! empty( $video_id ) ) {
 
 							$this->video_info_list[$video_id]['title'] = $video_title; 

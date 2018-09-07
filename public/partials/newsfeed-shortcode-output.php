@@ -29,19 +29,18 @@
 		</div>
 	</div>
 
-
 	<div class="tg-newsfeed-filter-wrap">
 		<div class="tg-newsfeed-filter-content">
 
-			<?php
+			<?php  
 
 				$NewsfeedTweets = new WpSocialTwitter( array(
-				  'consumer_key'        => 'mXX4HibMNrmU86ol6ajoVfJrU',
-				  'consumer_secret'     => '2UBH169B3v1iaBHWarkgOhXeMSX97ZWhkbixijJf8pvQCggSxh',
-				  'access_token'        => '161672794-xbjchxVasGPoiqTlMzLEKR6Vive2NVXxIqCnojXJ',
-				  'access_token_secret' => 'zizqFNBEgtjEobGcU5FwTHaf54xSIEeZBBALWZPyxNLDy',
+				  'consumer_key'        => newsfeed_get_options( 'newsfeed-twitter-consumer-key' ),
+				  'consumer_secret'     => newsfeed_get_options( 'newsfeed-twitter-consumer-secret' ),
+				  'access_token'        => newsfeed_get_options( 'newsfeed-twitter-access-token' ),
+				  'access_token_secret' => newsfeed_get_options( 'newsfeed-twitter-access-token-secret' ),
 				  'api_endpoint'        => 'statuses/home_timeline',
-				  'api_params'          => array( 'screen_name' => 'dhanukanuwan' )
+				  'api_params'          => array( 'screen_name' => newsfeed_get_options( 'newsfeed-twitter-username' ) )
 				));
 
 				$NewsfeedTweetsArray = $NewsfeedTweets->get_tweet_array();
@@ -82,8 +81,8 @@
 			<?php 
 
 				$NewsfeedYoutubeVideos = new WpSocialGoogle ( array( 
-					'api_key' 		=> 'AIzaSyCQw69zZi_hQin0YuVJREUgN7xgLf3vUDc',
-					'playlist_id'	=> 'PLxyNkZaNq8SsWtL4mYttdoOFpti0bTf0B'
+					'api_key' 		=> newsfeed_get_options( 'newsfeed-google-api-key' ),
+					'playlist_id'	=> newsfeed_get_options( 'newsfeed-youtube-playlist-id' )
 				 ) );
 
 				$NewsfeedVideoArray = $NewsfeedYoutubeVideos->fetch_youtube_videos();

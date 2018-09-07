@@ -60,8 +60,10 @@ class Triggerfish_Wp_Social_Feed_Public {
 	}
 
 	public function load_dependencies() {
+
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/twitter/wp-social-twitter.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/google/wp-social-google.php';
+		
 	}
 
 	/**

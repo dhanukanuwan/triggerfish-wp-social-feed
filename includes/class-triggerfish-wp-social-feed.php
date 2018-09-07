@@ -139,9 +139,6 @@ class Triggerfish_Wp_Social_Feed {
 
 		$plugin_admin = new Triggerfish_Wp_Social_Feed_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
 	}
 
 	/**
