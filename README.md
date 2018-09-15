@@ -2,7 +2,7 @@
 Display YouTube and Twitter feed in WordPress
 
 ## Notice
-This plugin still have a lot to improve. It currently support only Twitter and YouTube.
+This plugin still have a lot to improve. It currently supports only Twitter and YouTube.
 
 ## How to use
 First download the plugin and install it.<br/>
